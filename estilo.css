@@ -1,0 +1,505 @@
+/* Autor: Owen Yamil Campuzano Sanchez (@owensanchezz) | Universidad ICEL, Ingeniería en Desarrollo de Software y Aplicaciones */
+/* 1. Estilos Generales */
+/* Configuración base de toda la página: tipografía, fondo y espacio bajo la barra fija. */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding-top: 70px; /* Espacio para que el menú fijo no tape la tarjeta */
+}
+
+/* 2. Barra de Navegación (Navbar) */
+/* Fija el menú en la parte superior y distribuye el logotipo y los enlaces horizontalmente. */
+.navbar {
+    background-color: #333333;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.logo {
+    /* Da formato al texto si el logotipo incluye contenido textual. */
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
+.logo-logo {
+    /* Define el tamaño de la imagen del logotipo y recorta su contenido para ajustarlo. */
+    width: auto;
+    height: 50px;
+    border-radius: 0;
+    object-fit: contain;
+}
+
+/* Lista del menú */
+/* Coloca las opciones principales en una fila y quita las viñetas predeterminadas. */
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    position: relative; /* Necesario para posicionar el submenú */
+}
+
+.nav-links a {
+    /* Convierte cada enlace en un área cómoda para hacer clic y define su apariencia. */
+    color: white;
+    text-decoration: none;
+    padding: 20px 15px;
+    display: block;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.nav-links a:hover {
+    /* Resalta una opción del menú cuando el cursor pasa sobre ella. */
+    background-color: #007bff;
+}
+
+/* 3. Lógica del Menú Desplegable (Submenú) */
+/* Posiciona el submenú debajo de su elemento padre y lo oculta inicialmente. */
+.submenu {
+    position: absolute;
+    top: 100%; /* Se posiciona justo debajo del botón padre */
+    left: 0;
+    background-color: #444444;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 160px;
+    
+    /* TRUCO CLAVE: Ocultamos el menú por defecto */
+    display: none; 
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.submenu li a {
+    /* Ajusta el espacio y tamaño del texto de los enlaces del submenú. */
+    padding: 12px 15px;
+    font-size: 15px;
+}
+
+/* MAGIA EN CLASE: Cuando el cursor pasa por encima del elemento padre, 
+   el submenú cambia de 'none' a 'block' para mostrarse */
+.desplegable:hover .submenu {
+    /* Muestra las opciones del submenú mientras el cursor está sobre el elemento padre. */
+    display: block;
+}
+
+
+/* 4. Estilos de la Tarjeta (Centrado modificado) */
+/* Centra la tarjeta en el espacio disponible debajo del menú. */
+.contenedor-principal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px);
+}
+
+.tarjeta {
+    /* Crea una tarjeta blanca centrada con separación interna, esquinas redondeadas y sombra. */
+    background-color: #ffffff;
+    width: 320px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.tarjeta-img {
+    /* Presenta la imagen como un círculo con borde azul. */
+    width: auto;
+    height: 130px;
+    border-radius: 0;
+    object-fit: contain;
+}
+
+.tarjeta-nombre {
+    /* Da jerarquía visual al nombre mostrado en la tarjeta. */
+    font-size: 24px;
+    color: #333333;
+    margin: 15px 0 5px 0;
+}
+
+.tarjeta-titulo {
+    /* Destaca el programa académico con color, mayúsculas y espaciado entre letras. */
+    font-size: 14px;
+    color: #007bff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 15px 0;
+}
+
+.tarjeta-descripcion {
+    /* Mejora la lectura del texto descriptivo mediante color y espacio entre líneas. */
+    font-size: 15px;
+    color: #666666;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.tarjeta-boton {
+    /* Da al botón un estilo azul, forma redondeada y cursor de elemento interactivo. */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tarjeta-boton:hover {
+    /* Oscurece el botón para indicar visualmente que el cursor está encima. */
+    background-color: #0056b3;
+}
+/* ==========================================
+   6. ESTILOS PARA EL LOGIN FORMAL (CENTRO)
+   ========================================== */
+
+/* Corrección para centrar el bloque formal en pantalla completa */
+/* Estilos alternativos para centrar un formulario con fondo degradado. */
+.contenedor-formal {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;     /* Centra verticalmente */
+    
+    width: 100vw;            /* Fuerza a tomar todo el ancho visible */
+    min-height: calc(100vh - 60px); /* Toma el alto restante debajo de la barra */
+    
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    box-sizing: border-box;
+}
+.contenedor-login-centrado {
+    /* Ocupa el ancho disponible y centra vertical y horizontalmente el bloque de acceso. */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: calc(100vh - 70px);
+    background-color: #f0f2f5;
+}
+
+/* Asegúrate de que el bloque tenga un ancho límite para que no se estire */
+/* Define la tarjeta de acceso con un ancho adaptable y un máximo para pantallas grandes. */
+.bloque-login {
+    background-color: #ffffff;
+    width: 90%;             /* Se adapta a pantallas pequeñas */
+    max-width: 400px;       /* Evita que se estire en pantallas grandes */
+    padding: 45px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e1e6eb;
+    box-sizing: border-box;
+}
+
+
+/* El bloque central formal */
+/* Regla de presentación del panel de acceso: fondo, espacio interno, borde y sombra. */
+.bloque-login {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 400px;
+    padding: 45px 40px;
+    border-radius: 8px; /* Bordes menos redondeados para mayor formalidad */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra suave y ejecutiva */
+    border: 1px solid #e1e6eb;
+    box-sizing: border-box;
+}
+
+/* Textos informativos */
+/* Estilo del encabezado del formulario de acceso. */
+.login-titulo {
+    font-size: 26px;
+    color: #1a202c; /* Azul oscuro grisáceo */
+    margin: 0 0 8px 0;
+    text-align: center;
+    font-weight: 600;
+}
+
+.login-subtitulo {
+    /* Estilo de las instrucciones breves que aparecen bajo el título. */
+    font-size: 14px;
+    color: #718096;
+    margin: 0 0 30px 0;
+    text-align: center;
+}
+
+/* Contenedores de cada input */
+/* Separa verticalmente cada grupo de etiqueta y campo. */
+.campo-formal {
+    margin-bottom: 22px;
+}
+
+.campo-formal label {
+    /* Presenta las etiquetas como texto compacto encima de cada campo. */
+    display: block;
+    font-size: 13px;
+    color: #4a5568;
+    margin-bottom: 6px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Cajas de texto minimalistas */
+/* Estilo común de los campos para escribir usuario y contraseña. */
+.campo-formal input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e0;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #2d3748;
+    background-color: #f8fafc;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Enfoque formal: cambia el borde y el fondo se vuelve blanco puro */
+/* Indica qué campo está activo cuando el usuario lo selecciona o escribe en él. */
+.campo-formal input:focus {
+    border-color: #2b6cb0; /* Azul corporativo */
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15); /* Brillo sutil */
+    outline: none;
+}
+
+/* Botón corporativo plano con transición suave */
+/* Hace que el botón de autenticación ocupe el ancho del panel y destaque visualmente. */
+.boton-formal {
+    width: 100%;
+    background-color: #2b6cb0;
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+}
+
+.boton-formal:hover {
+    /* Cambia el tono del botón al pasar el cursor. */
+    background-color: #2c5282; /* Azul más oscuro al pasar el cursor */
+}
+
+/* Enlace inferior del formulario */
+/* Separa la opción de registro del formulario principal con una línea y espacio. */
+.pie-login {
+    margin-top: 30px;
+    border-top: 1px solid #edf2f7;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #718096;
+}
+
+.pie-login a {
+    /* Destaca el enlace para solicitar una cuenta. */
+    color: #2b6cb0;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.pie-login a:hover {
+    /* Subraya el enlace al pasar el cursor para indicar interacción. */
+    text-decoration: underline;
+}
+
+
+/* ==========================================
+   7. CONTINUACIÓN S5: MENÚ ADAPTABLE Y PÁGINAS NUEVAS
+   ========================================== */
+
+/* Botón de hamburguesa: solo se ve en pantallas chicas */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Página activa dentro del menú */
+.nav-links a.activo { background-color: #007bff; }
+
+/* El submenú también se abre con teclado (Tab) o con clic en celular */
+.desplegable:focus-within .submenu,
+.desplegable.abierto .submenu { display: block; }
+
+/* Foco visible para accesibilidad */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 3px solid #ffbf47;
+    outline-offset: 2px;
+}
+
+/* Contenedor general de las páginas internas */
+.pagina {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px 20px 50px;
+}
+.pagina h1 { color: #333333; font-size: 30px; margin: 10px 0 8px; }
+.pagina h2 { color: #333333; font-size: 22px; margin: 40px 0 16px; }
+.pagina .intro { color: #666666; line-height: 1.6; max-width: 70ch; margin: 0 0 24px; }
+
+/* Rejilla de tarjetas informativas */
+.rejilla {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+.tarjeta-info {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 24px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.tarjeta-info h3 { margin: 0 0 8px; font-size: 18px; color: #333333; }
+.tarjeta-info p { margin: 0; color: #666666; line-height: 1.5; font-size: 15px; }
+.tarjeta-info .etiqueta {
+    display: inline-block;
+    color: #007bff;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+.tarjeta-info a.enlace { display: inline-block; margin-top: 12px; color: #007bff; font-weight: 600; text-decoration: none; }
+.tarjeta-info a.enlace:hover { text-decoration: underline; }
+
+/* Tabla de fechas importantes */
+.tabla-fechas {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.tabla-fechas th, .tabla-fechas td { padding: 14px 18px; text-align: left; font-size: 15px; }
+.tabla-fechas th { background-color: #333333; color: #ffffff; }
+.tabla-fechas tr + tr td { border-top: 1px solid #edf2f7; }
+
+/* La tarjeta de inicio queda más compacta para dejar ver las secciones de abajo */
+.contenedor-principal.compacto { min-height: auto; padding: 40px 16px 10px; }
+
+/* Formularios (contacto, recuperar contraseña): reutilizan .campo-formal */
+.campo-formal textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e0;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: inherit;
+    color: #2d3748;
+    background-color: #f8fafc;
+    box-sizing: border-box;
+    min-height: 110px;
+    resize: vertical;
+}
+.campo-formal textarea:focus {
+    border-color: #2b6cb0;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+    outline: none;
+}
+.campo-formal input.invalido, .campo-formal textarea.invalido { border-color: #c53030; }
+.error-campo { color: #c53030; font-size: 13px; margin: 6px 0 0; min-height: 0; }
+
+/* Mensajes de resultado (correcto / error) */
+.mensaje {
+    margin: 16px 0 0;
+    padding: 12px 14px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: none;
+}
+.mensaje.visible { display: block; }
+.mensaje.ok { background-color: #e6f4ea; color: #1e6b34; border: 1px solid #b7dfc2; }
+.mensaje.error { background-color: #fdecea; color: #9b2c2c; border: 1px solid #f5c2c0; }
+
+/* Extras del login */
+.opciones-login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 14px;
+    color: #4a5568;
+    margin: -8px 0 6px;
+}
+.opciones-login a { color: #2b6cb0; text-decoration: none; font-weight: 600; }
+.opciones-login a:hover { text-decoration: underline; }
+.nota-demo { margin: 20px 0 0; font-size: 12px; color: #718096; text-align: center; }
+
+/* Ventana modal de contacto */
+.modal {
+    border: none;
+    border-radius: 15px;
+    padding: 30px;
+    width: 90%;
+    max-width: 420px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+.modal::backdrop { background: rgba(0, 0, 0, 0.5); }
+.modal h2 { margin: 0 0 6px; font-size: 22px; color: #333333; }
+.modal .login-subtitulo { text-align: left; margin-bottom: 20px; }
+.boton-secundario {
+    width: 100%;
+    background: none;
+    border: none;
+    color: #718096;
+    font-size: 14px;
+    padding: 12px;
+    cursor: pointer;
+}
+.boton-secundario:hover { text-decoration: underline; }
+
+/* Pie de página */
+.pie-sitio { text-align: center; color: #718096; font-size: 13px; padding: 20px 10px 30px; }
+
+/* Menú en celular */
+@media (max-width: 800px) {
+    .navbar { padding: 0 16px; }
+    .menu-toggle { display: block; }
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: #333333;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    .nav-links.abierto { display: flex; }
+    .submenu { position: static; width: 100%; box-shadow: none; }
+    .submenu li a { padding-left: 35px; }
+    .desplegable:hover .submenu { display: none; }
+    .desplegable.abierto .submenu { display: block; }
+    .tabla-fechas th, .tabla-fechas td { padding: 12px 10px; font-size: 14px; }
+}
+
+/* Respeta la preferencia de movimiento reducido del sistema */
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+}

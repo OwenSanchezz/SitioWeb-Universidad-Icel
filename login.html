@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!-- Autor: Owen Yamil Campuzano Sanchez (@owensanchezz) | Universidad ICEL, Ingeniería en Desarrollo de Software y Aplicaciones -->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión | Universidad Icel</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+    <!-- Barra de navegación: ahora todos los enlaces llevan a páginas reales. -->
+    <nav class="navbar">
+        <div class="logo"> <img src="Logo.png" alt="Logo de la Universidad Icel" class="logo-logo"></div>
+        <!-- Botón de hamburguesa, solo visible en celular. -->
+        <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">&#9776;</button>
+        <ul class="nav-links" id="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="acerca.html">Acerca de nosotros</a></li>
+            <li class="desplegable">
+                <a href="#" class="btn-desplegable">Catálogo ▼</a>
+                <ul class="submenu">
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="ofertas.html">Ofertas</a></li>
+                </ul>
+            </li>
+            <li><a href="ubicacion.html">Ubicación</a></li>
+            <li><a href="contacto.html">Contáctanos</a></li>
+            <li><a href="login.html" class="activo">Iniciar sesión</a></li>
+        </ul>
+    </nav>
+
+    <div class="contenedor-login-centrado">
+        <div class="bloque-login">
+            <h1 class="login-titulo">Acceso al Sistema</h1>
+            <p class="login-subtitulo">Por favor, introduce tus credenciales para continuar.</p>
+
+            <!-- novalidate: las validaciones las hace script.js para mostrar mensajes propios. -->
+            <form id="formLogin" novalidate>
+                <div class="campo-formal">
+                    <label for="usuario">Identificador de Usuario</label>
+                    <input type="text" id="usuario" placeholder="usuario@correo.com" autocomplete="username">
+                    <p class="error-campo" role="alert"></p>
+                </div>
+                <div class="campo-formal">
+                    <label for="password">Contraseña de Seguridad</label>
+                    <input type="password" id="password" placeholder="••••••••" autocomplete="current-password">
+                    <p class="error-campo" role="alert"></p>
+                </div>
+
+                <div class="opciones-login">
+                    <label><input type="checkbox" id="verPassword"> Mostrar contraseña</label>
+                    <a href="recuperar.html">¿Olvidó su contraseña?</a>
+                </div>
+
+                <button type="submit" class="boton-formal">Autenticar</button>
+                <p class="mensaje" role="status"></p>
+            </form>
+
+            <div class="pie-login">
+                <p>¿No dispone de una cuenta? <a href="contacto.html">Solicitar registro</a></p>
+            </div>
+            <p class="nota-demo">Cuenta de prueba: alumno@icel.mx / Icel2026</p>
+        </div>
+    </div>
+
+
+    <!-- JavaScript compartido: menú, formularios y login. -->
+    <script src="script.js"></script>
+</body>
+</html>

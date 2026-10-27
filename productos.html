@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- Autor: Owen Yamil Campuzano Sanchez (@owensanchezz) | Universidad ICEL, Ingeniería en Desarrollo de Software y Aplicaciones -->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos | Universidad Icel</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+    <!-- Barra de navegación: ahora todos los enlaces llevan a páginas reales. -->
+    <nav class="navbar">
+        <div class="logo"> <img src="Logo.png" alt="Logo de la Universidad Icel" class="logo-logo"></div>
+        <!-- Botón de hamburguesa, solo visible en celular. -->
+        <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">&#9776;</button>
+        <ul class="nav-links" id="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="acerca.html">Acerca de nosotros</a></li>
+            <li class="desplegable">
+                <a href="#" class="btn-desplegable">Catálogo ▼</a>
+                <ul class="submenu">
+                    <li><a href="productos.html" class="activo">Productos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="ofertas.html">Ofertas</a></li>
+                </ul>
+            </li>
+            <li><a href="ubicacion.html">Ubicación</a></li>
+            <li><a href="contacto.html">Contáctanos</a></li>
+            <li><a href="login.html">Iniciar sesión</a></li>
+        </ul>
+    </nav>
+
+    <main class="pagina">
+        <h1>Productos</h1>
+        <p class="intro">Programas académicos que ofrece la universidad.</p>
+        <div class="rejilla">
+            <article class="tarjeta-info"><span class="etiqueta">Ingeniería</span><h3>Desarrollo de Software y Aplicaciones</h3><p>Programación, bases de datos, desarrollo web y móvil.</p></article>
+            <article class="tarjeta-info"><span class="etiqueta">Ingeniería</span><h3>Sistemas Computacionales</h3><p>Redes, sistemas operativos e infraestructura.</p></article>
+            <article class="tarjeta-info"><span class="etiqueta">Próximamente</span><h3>Educación continua</h3><p>Cursos cortos y certificaciones.</p></article>
+        </div>
+    </main>
+    <p class="pie-sitio">Universidad Icel · Campus Zona Rosa</p>
+
+
+    <!-- JavaScript compartido: menú, formularios y login. -->
+    <script src="script.js"></script>
+</body>
+</html>

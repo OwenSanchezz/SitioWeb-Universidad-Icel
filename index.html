@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!-- Autor: Owen Yamil Campuzano Sanchez (@owensanchezz) | Universidad ICEL, Ingeniería en Desarrollo de Software y Aplicaciones -->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio | Universidad Icel</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+    <!-- Barra de navegación: ahora todos los enlaces llevan a páginas reales. -->
+    <nav class="navbar">
+        <div class="logo"> <img src="Logo.png" alt="Logo de la Universidad Icel" class="logo-logo"></div>
+        <!-- Botón de hamburguesa, solo visible en celular. -->
+        <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">&#9776;</button>
+        <ul class="nav-links" id="menu">
+            <li><a href="index.html" class="activo">Home</a></li>
+            <li><a href="acerca.html">Acerca de nosotros</a></li>
+            <li class="desplegable">
+                <a href="#" class="btn-desplegable">Catálogo ▼</a>
+                <ul class="submenu">
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="ofertas.html">Ofertas</a></li>
+                </ul>
+            </li>
+            <li><a href="ubicacion.html">Ubicación</a></li>
+            <li><a href="contacto.html">Contáctanos</a></li>
+            <li><a href="login.html">Iniciar sesión</a></li>
+        </ul>
+    </nav>
+
+    <!-- Tarjeta de presentación (la original), ahora con botón que abre el formulario de contacto. -->
+    <div class="contenedor-principal compacto">
+        <div class="tarjeta">
+            <img src="Logo.png" alt="Logo de la Universidad Icel" class="tarjeta-img">
+            <h1 class="tarjeta-nombre">Universidad Icel</h1>
+            <p class="tarjeta-titulo">Ingeniería en Sistemas Computacionales</p>
+            <p class="tarjeta-descripcion">Formando profesionales en el área de las tecnologías de la información y la comunicación.</p>
+            <button class="tarjeta-boton" id="btnContactar">Contactar</button>
+        </div>
+    </div>
+
+    <main class="pagina">
+        <h2>Carreras</h2>
+        <div class="rejilla">
+            <article class="tarjeta-info"><span class="etiqueta">Ingeniería</span><h3>Desarrollo de Software y Aplicaciones</h3><p>Programación, bases de datos, desarrollo web y móvil.</p></article>
+            <article class="tarjeta-info"><span class="etiqueta">Ingeniería</span><h3>Sistemas Computacionales</h3><p>Redes, sistemas operativos, arquitectura de software e infraestructura.</p></article>
+            <article class="tarjeta-info"><span class="etiqueta">Próximamente</span><h3>Educación continua</h3><p>Cursos cortos y certificaciones para quienes ya trabajan.</p></article>
+        </div>
+
+        <h2>Noticias</h2>
+        <div class="rejilla">
+            <article class="tarjeta-info"><span class="etiqueta">Campus</span><h3>Inicia el nuevo ciclo escolar</h3><p>Consulta horarios y grupos en Servicios escolares antes de la primera clase.</p></article>
+            <article class="tarjeta-info"><span class="etiqueta">Tecnología</span><h3>Semana de proyectos de Front End</h3><p>Los grupos presentan sus sitios y aplicaciones web al resto de la comunidad.</p></article>
+            <article class="tarjeta-info"><span class="etiqueta">Becas</span><h3>Abierta la convocatoria de becas</h3><p>Revisa requisitos y fechas en la sección de Ofertas.</p></article>
+        </div>
+
+        <h2>Fechas importantes</h2>
+        <table class="tabla-fechas">
+            <thead><tr><th>Fecha</th><th>Evento</th></tr></thead>
+            <tbody>
+                <tr><td>Noviembre</td><td>Entrega de proyectos de la unidad</td></tr>
+                <tr><td>Diciembre</td><td>Evaluaciones finales del ciclo</td></tr>
+                <tr><td>Enero</td><td>Reinscripciones al siguiente ciclo</td></tr>
+            </tbody>
+        </table>
+    </main>
+    <p class="pie-sitio">Universidad Icel · Campus Zona Rosa</p>
+
+
+    <!-- Ventana modal con el formulario de contacto (se abre con el botón "Contactar"). -->
+    <dialog class="modal" id="modal-contacto" aria-labelledby="titulo-modal">
+        <h2 id="titulo-modal">Contactar</h2>
+        <p class="login-subtitulo">Déjanos tus datos y un mensaje.</p>
+        <form class="form-contacto" novalidate>
+            <div class="campo-formal">
+                <label for="m-nombre">Nombre</label>
+                <input type="text" id="m-nombre" name="nombre" placeholder="Tu nombre completo" autocomplete="name">
+                <p class="error-campo" role="alert"></p>
+            </div>
+            <div class="campo-formal">
+                <label for="m-correo">Correo</label>
+                <input type="text" id="m-correo" name="correo" placeholder="nombre@correo.com" autocomplete="email">
+                <p class="error-campo" role="alert"></p>
+            </div>
+            <div class="campo-formal">
+                <label for="m-mensaje">Mensaje</label>
+                <textarea id="m-mensaje" name="mensaje" placeholder="¿En qué podemos ayudarte?"></textarea>
+                <p class="error-campo" role="alert"></p>
+            </div>
+            <button type="submit" class="boton-formal">Enviar mensaje</button>
+            <p class="mensaje" role="status"></p>
+        </form>
+        <button type="button" class="boton-secundario cerrar-modal">Cerrar</button>
+    </dialog>
+
+    <!-- JavaScript compartido: menú, formularios y login. -->
+    <script src="script.js"></script>
+</body>
+</html>
