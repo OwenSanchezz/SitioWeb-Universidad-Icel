@@ -2,7 +2,7 @@
 
 Sitio web de varias páginas para una universidad, hecho como proyecto de la materia de Front End: navegación responsive, formularios con validación y simulación de inicio de sesión. Proyecto académico, no es el sitio oficial de la institución.
 
-Demo en vivo: https://owensanchezz.github.io/portafolio/sitio-universidad-icel/
+Demo en vivo: https://owensanchezz.github.io/SitioWeb-Universidad-Icel/
 
 ## Funciones
 
